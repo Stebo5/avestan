@@ -58,14 +58,7 @@ func DownloadImage(urlPath string, filePath string) {
 }
 
 func GetDownloadsPath() string {
-	FOLDERID_Downloads := windows.GUID{
-		Data1: 0x374DE290,
-		Data2: 0x123F,
-		Data3: 0x4565,
-		Data4: [8]byte{0x91, 0x64, 0x39, 0xC4, 0x92, 0x5E, 0x46, 0x7B},
-	}
-
-	downloadsPath, err := windows.KnownFolderPath((*windows.KNOWNFOLDERID)(&FOLDERID_Downloads), 0)
+	downloadsPath, err := windows.KnownFolderPath(windows.FOLDERID_Downloads, 0)
 	if err != nil {
 		return ""
 	}
